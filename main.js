@@ -17,10 +17,13 @@ let continuar = true; // Inicialmente, el while se ejecutará
 
 while (continuar) {
     // Capturar la cantidad de instrumentos a comprar
-    let cantidad = parseInt(prompt("Ingrese la cantidad de instrumentos que desea comprar (0 para salir):"));
+    let cantidad = prompt("Ingrese cantidad de instrumentos a elección. (Ingrese '0' para salir)");
+    cantidad = parseInt(cantidad);
 
-    if (cantidad == 0) {
-        continuar = false; // Cuando la cantidad es 0, el while se hará false
+    if (isNaN(cantidad)) {
+        alert("Entrada no válida. Debe ingresar un número.");
+    } else if (cantidad == 0) {
+        continuar = false;
         alert("Puedes comprar en otra ocasión.");
     } else {
         // Capturar instrumento en específico
