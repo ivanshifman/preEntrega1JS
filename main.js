@@ -58,7 +58,7 @@ while (continuar) {
         // Solicitar el método de pago
         let metodoPago;
         let cuotasOption = 1; // Inicializar cuotasOption en 1
-
+        // Pago en tarjeta o efectivo
         metodoPago = prompt("Ingrese el método de pago (Efectivo, Tarjeta):");
 
         // Calcular el IVA y permitir el pago en cuotas solo con tarjeta
