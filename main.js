@@ -4,7 +4,7 @@ const piano = 2000;
 const bateria = 3000;
 // Definir las constantes para IVA e interés
 const IVA = 0.21; // Tasa de IVA del 21%
-const INTERES = 0.05; // Tasa de interés del 5%
+const INTERES = 0.05; // Tasa de interés mensual del 5%
 
 function multiplicar(valor1, valor2) {
     const resultado = valor1 * valor2;
@@ -27,8 +27,6 @@ while (continuar) {
         let instrumento = prompt("Ingrese el instrumento que desea comprar (guitarra, piano, bateria):");
 
         let resultadoCompra;
-
-
         // Calcular el costo de compra en base al instrumento seleccionado
         switch (instrumento) {
             case "guitarra":
@@ -45,7 +43,7 @@ while (continuar) {
                 continue;
         }
 
-        // Calcular el costo de envío en base a la cantidad de kilos
+        // Calcular el costo de envío en base a la cantidad de instrumentos
         let costoEnvio;
 
         if (cantidad >= 10) {
@@ -55,27 +53,33 @@ while (continuar) {
         } else {
             costoEnvio = 200;
         }
+
         // Solicitar el método de pago
         let metodoPago;
-        let cuotasOption = 1; // Inicializar cuotasOption en 1
+        let cuotasOption = 1;
+
         // Pago en tarjeta o efectivo
         metodoPago = prompt("Ingrese el método de pago (Efectivo, Tarjeta):");
 
-        // Calcular el IVA y permitir el pago en cuotas solo con tarjeta
+        // Calcular y permitir el pago en cuotas solo con tarjeta
         if (metodoPago == "tarjeta" || metodoPago == "Tarjeta") {
 
             cuotasOption = parseInt(prompt("¿En cuántas cuotas desea pagar? (6 o 12): \n Puedes pagar también en un solo pago (1)"));
 
             if (cuotasOption == 6 || cuotasOption == 12) {
                 resultadoCompra = resultadoCompra + (resultadoCompra * INTERES * cuotasOption * IVA);
-            } else if (cuotasOption != 1) {
-                alert("Número de cuotas no válido.");
+                alert("Pagas en " + cuotasOption + " cuotas");
+            } else if (cuotasOption == 1) {
+                alert("Pagas en un solo pago");
+            }
+            else {
+                alert("Cuotas inválidas");
                 break;
             }
         } else if (metodoPago == "efectivo" || metodoPago == "Efectivo") {
             alert("Método de pago efectivo.");
         } else {
-            alert("Método de pago invalido")
+            alert("Método de pago inválido");
             break;
         }
 
@@ -85,20 +89,20 @@ while (continuar) {
         alert("Resultado:\n" +
             "Instrumento elegido: " + instrumento + "\n" +
             "Cantidad de instrumentos: " + cantidad + "\n" +
-            "Metodo de pago: " + metodoPago + "\n" +
-            "Cuotas : " + (metodoPago == "tarjeta" ? cuotasOption : "N/A") + "\n" +
+            "Método de pago: " + metodoPago + "\n" +
+            "Cuotas : " + (metodoPago == "tarjeta" || metodoPago == "Tarjeta" ? cuotasOption : "N/A") + "\n" +
             "Costo de compra: $" + resultadoCompra + "\n" +
             "Costo de envío: $" + costoEnvio + "\n" +
             "IVA: 21% en caso de pago con tarjeta" + "\n" +
+            "Recargo mensual de cuotas: 5%" + "\n" +
             "Total a pagar: $" + totalCompra);
     }
-    break;
 }
 // Pregunta sobre la suscripción
 let suscripcion = prompt("¿Desea suscribirse a nuestra página? (Sí/No):");
 
 if (suscripcion == "si" || suscripcion == "sí" || suscripcion == "Si" || suscripcion == "Sí") {
-    alert("Gracias por suscribirte a nuestra página.");
+    alert("Gracias por suscribirte a nuestra página. Saludos.");
 } else if (suscripcion == "no" || suscripcion == "No") {
     alert("Gracias por visitarnos. ¡Hasta pronto!");
 } else {
