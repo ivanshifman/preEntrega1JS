@@ -17,8 +17,7 @@ let continuar = true; // Inicialmente, el while se ejecutará
 
 while (continuar) {
     // Capturar la cantidad de instrumentos a comprar
-    let cantidad = prompt("Ingrese cantidad de instrumentos a elección. (Ingrese '0' para salir)");
-    cantidad = parseInt(cantidad);
+    let cantidad = parseInt(prompt("Ingrese cantidad de instrumentos a elección. Ingrese '0' para salir")); 
 
     if (isNaN(cantidad)) {
         alert("Entrada no válida. Debe ingresar un número.");
@@ -31,7 +30,7 @@ while (continuar) {
 
         let resultadoCompra;
         // Calcular el costo de compra en base al instrumento seleccionado
-        switch (instrumento) {
+        switch (instrumento.toLowerCase()) {
             case "guitarra":
                 resultadoCompra = multiplicar(guitarra, cantidad);
                 break;
@@ -58,14 +57,13 @@ while (continuar) {
         }
 
         // Solicitar el método de pago
-        let metodoPago;
         let cuotasOption = 1;
 
         // Pago en tarjeta o efectivo
-        metodoPago = prompt("Ingrese el método de pago (Efectivo, Tarjeta):");
+        let metodoPago = prompt("Ingrese el método de pago (Efectivo, Tarjeta):").toLowerCase();
 
         // Calcular y permitir el pago en cuotas solo con tarjeta
-        if (metodoPago == "tarjeta" || metodoPago == "Tarjeta") {
+        if (metodoPago == "tarjeta") {
 
             cuotasOption = parseInt(prompt("¿En cuántas cuotas desea pagar? (6 o 12): \n Puedes pagar también en un solo pago (1)"));
 
@@ -79,7 +77,7 @@ while (continuar) {
                 alert("Cuotas inválidas");
                 break;
             }
-        } else if (metodoPago == "efectivo" || metodoPago == "Efectivo") {
+        } else if (metodoPago == "efectivo") {
             alert("Método de pago efectivo.");
         } else {
             alert("Método de pago inválido");
@@ -93,7 +91,7 @@ while (continuar) {
             "Instrumento elegido: " + instrumento + "\n" +
             "Cantidad de instrumentos: " + cantidad + "\n" +
             "Método de pago: " + metodoPago + "\n" +
-            "Cuotas : " + (metodoPago == "tarjeta" || metodoPago == "Tarjeta" ? cuotasOption : "N/A") + "\n" +
+            "Cuotas : " + (metodoPago == "tarjeta" ? cuotasOption : "N/A") + "\n" +
             "Costo de compra: $" + resultadoCompra + "\n" +
             "Costo de envío: $" + costoEnvio + "\n" +
             "IVA: 21% en caso de pago con tarjeta" + "\n" +
@@ -102,11 +100,11 @@ while (continuar) {
     }
 }
 // Pregunta sobre la suscripción
-let suscripcion = prompt("¿Desea suscribirse a nuestra página? (Sí/No):");
+let suscripcion = prompt("¿Desea suscribirse a nuestra página? (Sí/No):").toLowerCase();
 
-if (suscripcion == "si" || suscripcion == "sí" || suscripcion == "Si" || suscripcion == "Sí") {
+if (suscripcion == "si" || suscripcion == "sí") {
     alert("Gracias por suscribirte a nuestra página. Saludos.");
-} else if (suscripcion == "no" || suscripcion == "No") {
+} else if (suscripcion == "no") {
     alert("Gracias por visitarnos. ¡Hasta pronto!");
 } else {
     alert("Respuesta no válida.");
