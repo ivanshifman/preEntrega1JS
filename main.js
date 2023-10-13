@@ -21,7 +21,7 @@ while (continuar) {
 
     if (isNaN(cantidad)) {
         alert("Entrada no válida. Debe ingresar un número.");
-    } else if (cantidad == 0) {
+    } else if (cantidad <= 0) {
         continuar = false;
         alert("Puedes comprar en otra ocasión.");
     } else {
